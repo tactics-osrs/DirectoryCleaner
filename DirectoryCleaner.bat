@@ -29,12 +29,19 @@ for /r %%i in (*) do (
     echo %%~nxi >> filelist.txt
 )
 
-echo Deleting all files in "%dir%"...
-echo.
-REM Delete all files in the directory and log the deleted files
-for /r %%i in (*) do (
-    echo Deleting %%~nxi >> tempdeletionlog.txt
-    del /q "%%i"
+echo Are you sure you want to delete all files in "%dir%"? (Y/N)
+set /p "confirm="
+if /I "%confirm%"=="Y" (
+    echo Deleting all files in "%dir%"...
+    echo.
+    REM Delete all files in the directory and log the deleted files
+    for /r %%i in (*) do (
+        echo Deleting %%~nxi >> tempdeletionlog.txt
+        del /q "%%i"
+    )
+) else (
+    echo Operation cancelled by user.
+    goto start
 )
 
 echo Do you want to save the log of deleted files? (Y/N)
