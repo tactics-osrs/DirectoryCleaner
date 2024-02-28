@@ -4,12 +4,18 @@ REM Date Written: February 27, 2024
 REM Written By: Tactics
 
 color 0A
+
 :start
 set "dir="
 echo Please enter the directory you want to clear or 'help':
 set /p "dir="
 if /I "%dir%"=="help" goto Help
-REM Errorhandling for non-existent directory input
+REM Failsafe for critical system directories
+if "%dir%"=="C:\Windows\System32" (
+    echo Error: You cannot clear this directory.
+    pause
+    goto start
+)
 if not exist "%dir%" (
     echo Error: Directory does not exist. Please input an existing Directory.
 	echo See 'help' for more information on how to find directories.
@@ -17,6 +23,9 @@ if not exist "%dir%" (
     pause
     goto start
 )
+echo You have chosen to clear the directory: "%dir%"
+set /p "confirm=Is this correct? (YES/NO): "
+if /I "%confirm%"=="NO" goto start
 cd /d "%dir%"
 echo Setting directory to "%dir%"...
 echo.
