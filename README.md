@@ -18,3 +18,10 @@ To find the directory location of a file, right-click the file, select 'Properti
 ## Help
 
 If you need help while running the script, type 'help' when prompted to enter a directory. The script will display a help message with more information about what it does and how to find directories.
+
+## Notes
+
+I've added a failsafe to protect Windows system32 directory.
+Added confirmation message which includes the users input directory to confirm prior to deletion.
+Errorhandling added to detect non-existent/improperly input directory paths.
+Included a 'help' feature.
