@@ -26,4 +26,5 @@ To find the directory location of a file, right-click the file, select 'Properti
 * I've added a failsafe to protect Windows system32 directory.
 * Added confirmation message which includes the users input directory to confirm prior to deletion.
 * Errorhandling added to detect non-existent/improperly input directory paths.
-*Included a 'help' feature which will give a brief description of the functions of this script as well as how to obtain directories.
+* Included a 'help' feature which will give a brief description of the functions of this script as well as how to obtain directories.
+* Added the option for the user to keep a log of the deleted items from the input directory location, which will be saved as "deletionlog.txt"
