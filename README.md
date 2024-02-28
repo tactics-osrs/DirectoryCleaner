@@ -11,13 +11,15 @@ The script will then delete all files in the specified directory and its subdire
 
 Please note that this script will only recreate files, not directories. Also, the recreated files will be empty - any data they contained will be lost. Be sure to back up any important data before running this script.
 
-## Finding a Directory
 
-To find the directory location of a file, right-click the file, select 'Properties', and look for 'Location'.
 
 ## Help
 
 If you need help while running the script, type 'help' when prompted to enter a directory. The script will display a help message with more information about what it does and how to find directories.
+
+# Finding a Directory
+
+To find the directory location of a file, right-click the file, select 'Properties', and look for 'Location'.
 
 ## Notes
 
