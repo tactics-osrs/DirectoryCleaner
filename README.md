@@ -21,7 +21,7 @@ If you need help while running the script, type 'help' when prompted to enter a 
 
 ## Notes
 
-I've added a failsafe to protect Windows system32 directory.
-Added confirmation message which includes the users input directory to confirm prior to deletion.
-Errorhandling added to detect non-existent/improperly input directory paths.
-Included a 'help' feature.
+* I've added a failsafe to protect Windows system32 directory.
+* Added confirmation message which includes the users input directory to confirm prior to deletion.
+* Errorhandling added to detect non-existent/improperly input directory paths.
+*Included a 'help' feature which will give a brief description of the functions of this script as well as how to obtain directories.
