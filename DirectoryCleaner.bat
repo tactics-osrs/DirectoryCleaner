@@ -44,12 +44,14 @@ if /I "%confirm%"=="Y" (
     goto start
 )
 
-echo Do you want to save the log of deleted files? (Y/N)
-set /p "log="
-if /I "%log%"=="Y" (
-    move /Y tempdeletionlog.txt deletionlog.txt
-) else (
-    del /q tempdeletionlog.txt
+if exist tempdeletionlog.txt (
+    echo Do you want to save the log of deleted files? (Y/N)
+    set /p "log="
+    if /I "%log%"=="Y" (
+        move /Y tempdeletionlog.txt deletionlog.txt
+    ) else (
+        del /q tempdeletionlog.txt
+    )
 )
 
 echo Recreating the files for "%dir%"...
