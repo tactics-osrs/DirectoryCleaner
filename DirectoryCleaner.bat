@@ -6,16 +6,12 @@ REM Written By: Tactics
 color 0A
 
 :start
+powershell -Command "Get-Date"
 set "dir="
 echo Please enter the directory you want to clear or 'help':
 set /p "dir="
 if /I "%dir%"=="help" goto Help
-REM Failsafe for critical system directories
-if "%dir%"=="C:\Windows\System32" (
-    echo Error: You cannot clear this directory.
-    pause
-    goto start
-)
+REM Errorhandling for non-existent directory input
 if not exist "%dir%" (
     echo Error: Directory does not exist. Please input an existing Directory.
 	echo See 'help' for more information on how to find directories.
@@ -23,9 +19,6 @@ if not exist "%dir%" (
     pause
     goto start
 )
-echo You have chosen to clear the directory: "%dir%"
-set /p "confirm=Is this correct? (YES/NO): "
-if /I "%confirm%"=="NO" goto start
 cd /d "%dir%"
 echo Setting directory to "%dir%"...
 echo.
@@ -38,8 +31,19 @@ for /r %%i in (*) do (
 
 echo Deleting all files in "%dir%"...
 echo.
-REM Delete all files in the directory
-del /q *
+REM Delete all files in the directory and log the deleted files
+for /r %%i in (*) do (
+    echo Deleting %%~nxi >> tempdeletionlog.txt
+    del /q "%%i"
+)
+
+echo Do you want to save the log of deleted files? (Y/N)
+set /p "log="
+if /I "%log%"=="Y" (
+    move /Y tempdeletionlog.txt deletionlog.txt
+) else (
+    del /q tempdeletionlog.txt
+)
 
 echo Recreating the files for "%dir%"...
 echo.
@@ -57,6 +61,9 @@ if exist filelist.txt (
     del filelist.txt
 )
 echo Successfully cleared "%dir%"
+echo.
+echo Written by Tactics
+echo.
 echo.
 Pause
 goto Start
@@ -76,6 +83,9 @@ echo.
 echo Also, the recreated files will be empty - any data they contained will be lost.
 echo.
 echo Be sure to back up any important data before running this script.
+echo.
+echo Written by Tactics
+echo.
 echo.
 Pause
 goto Start
