@@ -1,4 +1,9 @@
 @echo off
+REM Script Name: DirectoryCleaner
+REM Date Written: February 27, 2024
+REM Written By: Tactics
+
+color 0A
 :start
 set "dir="
 echo Please enter the directory you want to clear or 'help':
