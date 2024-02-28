@@ -82,7 +82,7 @@ echo To find the directory location of a file, right-click the file, select 'Pro
 echo.
 echo When you run this script, it will ask you to enter the directory you want to clear.
 echo.
-echo After you enter the directory, the script will delete all files in that directory and its subdirectories.
+echo After you enter the directory, the script will ask for confirmation before deleting the files.
 echo Then, it will recreate each file as an empty file automatically and instantly.
 echo.
 echo Please note that this script will only recreate files, not directories.
